@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Registration and Login</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<h2>Student Registration and Login</h2>
+
+	<div ng-show="!loggedIn">
+		<h3>Register</h3>
+		<form>
+			<label>First Name:</label>
+			<input type="text" ng-model="firstName"><br>
+
+			<label>Last Name:</label>
+			<input type="text" ng-model="lastName"><br>
+
+			<label>Email:</label>
+			<input type="email" ng-model="email"><br>
+
+			<label>Password:</label>
+			<input type="password" ng-model="password"><br>
+
+			<button ng-click="register()">Register</button>
+		</form>
+
+		<p ng-show="registrationError">{{ registrationError }}</p>
+
+		<h3>Login</h3>
+		<form>
+			<label>Email:</label>
+			<input type="email" ng-model="loginEmail"><br>
+
+			<label>Password:</label>
+			<input type="password" ng-model="loginPassword"><br>
+
+			<button ng-click="login()">Login</button>
+		</form>
+
+		<p ng-show="loginError">{{ loginError }}</p>
+	</div>
+
+	<div ng-show="loggedIn">
+		<h3>Welcome, {{ firstName }} {{ lastName }}!</h3>
+		<p>Your email is {{ email }}.</p>
+		<button ng-click="logout()">Logout</button>
+	</div>
+</body>
+</html>
